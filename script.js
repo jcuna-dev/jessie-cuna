@@ -109,7 +109,6 @@ function initTypingEffect() {
         'System Designer',
         'UI/UX Enthusiast',
         'Problem Solver',
-        'Perfectionist'
     ];
     
     let wordIndex = 0;
