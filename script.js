@@ -5,7 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
-    initTypingEffect();
     initNavigation();
     initContactForm();
     initCardDoubleClick();
@@ -23,30 +22,6 @@ function initThemeToggle() {
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
-}
-
-function initTypingEffect() {
-    const el = document.getElementById('typingText');
-    if (!el) return;
-
-    const words = ['Full-Stack Developer', 'System Designer', 'UI/UX Enthusiast', 'Problem Solver'];
-    let i = 0, j = 0, deleting = false;
-
-    function tick() {
-        const word = words[i];
-        if (deleting) {
-            el.textContent = word.substring(0, j - 1);
-            j--;
-        } else {
-            el.textContent = word.substring(0, j + 1);
-            j++;
-        }
-        const delay = deleting ? 40 : j === word.length ? 2000 : 80;
-        if (!deleting && j === word.length) deleting = true;
-        else if (deleting && j === 0) { deleting = false; i = (i + 1) % words.length; }
-        setTimeout(tick, delay);
-    }
-    tick();
 }
 
 function initNavigation() {

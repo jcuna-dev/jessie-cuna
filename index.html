@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation - Linear style -->
@@ -43,15 +43,26 @@
             <!-- Hero card - spans 2 cols -->
             <article class="bento-card bento-hero" id="hero" data-href="about.html">
                 <div class="card-inner">
-                    <p class="hero-greeting">Hello, I'm</p>
-                    <h1 class="hero-name"><span class="name-first">JC</span> <span class="name-last">Cuna</span></h1>
-                    <p class="hero-title">
-                        <span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
-                    </p>
-                    <p class="hero-desc">Building robust systems with clean architecture. Based in the Philippines 🇵🇭</p>
+                    <span class="hero-status">
+                        <span class="status-dot"></span>
+                        Available for projects
+                    </span>
+                    <h1 class="hero-name">
+                        <span class="name-first">JC</span><span class="name-last">Cuna</span>
+                    </h1>
+                    <p class="hero-tagline">I design and build systems that scale.</p>
+                    <div class="hero-badges">
+                        <span class="hero-badge">Architecture</span>
+                        <span class="hero-badge">Performance</span>
+                        <span class="hero-badge">Craft</span>
+                    </div>
+                    <p class="hero-desc">Full-stack developer. Based in the Philippines 🇵🇭</p>
                     <div class="hero-cta">
-                        <a href="projects.html" class="btn btn-primary">View Work</a>
-                        <a href="contact.html" class="btn btn-secondary">Contact</a>
+                        <a href="projects.html" class="btn btn-primary">
+                            View selected work
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary">Let's talk</a>
                     </div>
                 </div>
             </article>
