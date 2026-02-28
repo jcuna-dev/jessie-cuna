@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | JC Cuna - Full-Stack Developer</title>
+    <meta name="description" content="Featured projects by JC Cuna - clinic systems, inventory, appointments.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-projects">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><span class="logo-text">JC</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="typing.html" class="nav-link">Typing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="bento-page">
+        <div class="bento-grid bento-grid-projects">
+            <article class="bento-card bento-card-wide">
+                <div class="card-inner">
+                    <h3 class="card-label">Featured Work</h3>
+                    <h1 class="page-title">Projects</h1>
+                    <p class="about-text">Real-world systems I've built for healthcare, e-commerce, and business.</p>
+                </div>
+            </article>
+            <article class="bento-card bento-project">
+                <div class="card-inner">
+                    <span class="project-tag">Healthcare</span>
+                    <h3>Clinic Monitoring System</h3>
+                    <p>Comprehensive system for patient management, appointment scheduling, and medical records with real-time updates and reporting dashboards.</p>
+                    <div class="project-tech"><span>Blade</span><span>Laravel</span><span>MySQL</span><span>jQuery</span></div>
+                </div>
+            </article>
+            <article class="bento-card bento-project">
+                <div class="card-inner">
+                    <span class="project-tag">E-Commerce</span>
+                    <h3>Inventory Management Platform</h3>
+                    <p>Full-featured inventory system with barcode scanning, stock alerts, multi-warehouse support, and detailed analytics for business insights.</p>
+                    <div class="project-tech"><span>Blade</span><span>Laravel</span><span>MySQL</span><span>jQuery</span></div>
+                </div>
+            </article>
+            <article class="bento-card bento-project">
+                <div class="card-inner">
+                    <span class="project-tag">Business</span>
+                    <h3>Appointment Portal</h3>
+                    <p>Smart booking system with calendar integration, automated reminders, conflict detection, and a customer-facing interface.</p>
+                    <div class="project-tech"><span>Blade</span><span>jQuery</span><span>MySQL</span><span>Laravel</span></div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

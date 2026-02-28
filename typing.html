@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test | JC Cuna</title>
+    <meta name="description" content="Type motivational stories and quotes - practice typing while getting inspired.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="page-typing">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><span class="logo-text">JC</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="typing.html" class="nav-link active">Typing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="typing-page">
+        <div class="typing-container">
+            <div class="typing-header">
+                <div class="typing-controls">
+                    <div class="typing-modes">
+                        <button class="mode-btn active" data-time="15">15s</button>
+                        <button class="mode-btn" data-time="30">30s</button>
+                        <button class="mode-btn" data-time="60">60s</button>
+                        <button class="mode-btn" data-time="120">120s</button>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" id="randomizeBtn" title="Get a new motivational story">↻ Randomize Story</button>
+                </div>
+                <div class="typing-stats">
+                    <span class="stat" id="wpmStat">— WPM</span>
+                    <span class="stat" id="accStat">—% acc</span>
+                    <span class="stat" id="timerStat">0:00</span>
+                </div>
+            </div>
+
+            <div class="typing-area" id="typingArea">
+                <div class="words-display" id="wordsDisplay"></div>
+                <input type="text" class="typing-input" id="typingInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here or press any key to start" tabindex="0">
+            </div>
+
+            <div class="typing-footer">
+                <button class="btn btn-secondary" id="restartBtn">Restart</button>
+                <p class="typing-hint">Esc to restart · Tab to focus input</p>
+            </div>
+        </div>
+
+        <!-- Results overlay -->
+        <div class="typing-results" id="resultsOverlay">
+            <div class="results-card">
+                <h2>Test Complete</h2>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-value" id="resultWpm">0</span>
+                        <span class="result-label">WPM</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value" id="resultAcc">0%</span>
+                        <span class="result-label">Accuracy</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value" id="resultRaw">0</span>
+                        <span class="result-label">Raw WPM</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="tryAgainBtn">Try Again</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="typing.js"></script>
+</body>
+</html>
