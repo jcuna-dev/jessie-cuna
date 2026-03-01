@@ -31,13 +31,16 @@ function initNavigation() {
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileBtn && navLinks) {
+        mobileBtn.setAttribute('aria-expanded', 'false');
         mobileBtn.addEventListener('click', () => {
-            mobileBtn.classList.toggle('active');
+            const isExpanded = mobileBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            mobileBtn.setAttribute('aria-expanded', isExpanded);
         });
         links.forEach(l => l.addEventListener('click', () => {
             mobileBtn.classList.remove('active');
             navLinks.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
         }));
     }
 

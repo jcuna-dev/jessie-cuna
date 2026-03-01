@@ -11,10 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation - Linear style -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo" aria-label="JC Cuna - Home">
                 <span class="logo-text">JC</span>
             </a>
             <ul class="nav-links">
@@ -26,19 +27,19 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Bento Grid - Single viewport, no scroll -->
-    <main class="bento-page">
+    <main class="bento-page" id="main-content">
         <div class="bento-grid">
             <!-- Hero card - spans 2 cols -->
             <article class="bento-card bento-hero" id="hero" data-href="about.html">
@@ -60,7 +61,7 @@
                     <div class="hero-cta">
                         <a href="projects.html" class="btn btn-primary">
                             View selected work
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                         <a href="contact.html" class="btn btn-secondary">Let's talk</a>
                     </div>
@@ -89,7 +90,7 @@
             <!-- About card -->
             <article class="bento-card bento-about" id="about" data-href="about.html">
                 <div class="card-inner">
-                    <h3 class="card-label">About</h3>
+                    <span class="card-label">About</span>
                     <p class="about-text">Full-stack developer focused on <strong>system design</strong>, <strong>performance</strong>, and <strong>clean UIs</strong>. Fundamentals first, speed second.</p>
                     <div class="exp-badge">2+ years</div>
                 </div>
@@ -98,7 +99,7 @@
             <!-- Skills card -->
             <article class="bento-card bento-skills" id="skills" data-href="skills.html">
                 <div class="card-inner">
-                    <h3 class="card-label">Skills</h3>
+                    <span class="card-label">Skills</span>
                     <div class="skills-compact">
                         <span>Laravel</span>
                         <span>Blade</span>
@@ -114,7 +115,7 @@
             <article class="bento-card bento-project" id="projects" data-href="projects.html">
                 <div class="card-inner">
                     <span class="project-tag">Healthcare</span>
-                    <h3>Clinic Monitoring</h3>
+                    <h2 class="project-title">Clinic Monitoring</h2>
                     <p>Patient management, appointments, medical records with real-time dashboards.</p>
                     <div class="project-tech"><span>Laravel</span><span>MySQL</span></div>
                 </div>
@@ -134,7 +135,7 @@
             <article class="bento-card bento-project" data-href="projects.html">
                 <div class="card-inner">
                     <span class="project-tag">Business</span>
-                    <h3>Appointment Portal</h3>
+                    <h2 class="project-title">Appointment Portal</h2>
                     <p>Smart booking, calendar, reminders, conflict detection.</p>
                     <div class="project-tech"><span>jQuery</span><span>Laravel</span></div>
                 </div>
@@ -143,7 +144,7 @@
             <!-- Contact card -->
             <article class="bento-card bento-contact" id="contact" data-href="contact.html">
                 <div class="card-inner">
-                    <h3 class="card-label">Contact</h3>
+                    <span class="card-label">Contact</span>
                     <a href="mailto:jc.cuna1@gmail.com" class="contact-email">jc.cuna1@gmail.com</a>
                     <div class="social-row">
                         <a href="#" class="social-link" aria-label="GitHub">GH</a>

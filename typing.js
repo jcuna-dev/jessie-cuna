@@ -177,6 +177,8 @@
         document.getElementById('resultAcc').textContent = acc + '%';
         document.getElementById('resultRaw').textContent = rawWpm;
         resultsOverlay.classList.add('visible');
+        resultsOverlay.setAttribute('aria-hidden', 'false');
+        tryAgainBtn.focus();
     }
 
     function init() {
@@ -199,6 +201,7 @@
         accStat.textContent = '—% acc';
         timerStat.textContent = formatTime(state.timeLimit);
         resultsOverlay.classList.remove('visible');
+        resultsOverlay.setAttribute('aria-hidden', 'true');
         typingInput.value = '';
         typingInput.disabled = false;
         typingInput.focus();
@@ -298,8 +301,12 @@
         modeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (state.isRunning) return;
-                modeBtns.forEach(b => b.classList.remove('active'));
+                modeBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
                 state.timeLimit = parseInt(btn.dataset.time, 10);
                 timerStat.textContent = formatTime(state.timeLimit);
             });

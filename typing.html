@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="page-typing">
-    <nav class="navbar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navbar" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo"><span class="logo-text">JC</span></a>
+            <a href="index.html" class="logo" aria-label="JC Cuna - Home"><span class="logo-text">JC</span></a>
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
@@ -23,26 +24,26 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+                    <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="typing-page">
+    <main class="typing-page" id="main-content">
         <div class="typing-container">
             <div class="typing-header">
                 <div class="typing-controls">
                     <div class="typing-modes">
-                        <button class="mode-btn active" data-time="15">15s</button>
-                        <button class="mode-btn" data-time="30">30s</button>
-                        <button class="mode-btn" data-time="60">60s</button>
-                        <button class="mode-btn" data-time="120">120s</button>
+                        <button class="mode-btn active" data-time="15" aria-pressed="true">15s</button>
+                        <button class="mode-btn" data-time="30" aria-pressed="false">30s</button>
+                        <button class="mode-btn" data-time="60" aria-pressed="false">60s</button>
+                        <button class="mode-btn" data-time="120" aria-pressed="false">120s</button>
                     </div>
-                    <button class="btn btn-secondary btn-sm" id="randomizeBtn" title="Get a new motivational story">↻ Randomize Story</button>
+                    <button class="btn btn-secondary btn-sm" id="randomizeBtn" aria-label="Get a new motivational story">↻ Randomize Story</button>
                 </div>
                 <div class="typing-stats">
                     <span class="stat" id="wpmStat">— WPM</span>
@@ -51,9 +52,9 @@
                 </div>
             </div>
 
-            <div class="typing-area" id="typingArea">
+            <div class="typing-area" id="typingArea" role="region" aria-label="Typing test area">
                 <div class="words-display" id="wordsDisplay"></div>
-                <input type="text" class="typing-input" id="typingInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here or press any key to start" tabindex="0">
+                <input type="text" class="typing-input" id="typingInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Click here or press any key to start" tabindex="0" aria-label="Typing test input - type the words shown above">
             </div>
 
             <div class="typing-footer">
@@ -63,9 +64,9 @@
         </div>
 
         <!-- Results overlay -->
-        <div class="typing-results" id="resultsOverlay">
+        <div class="typing-results" id="resultsOverlay" role="dialog" aria-modal="true" aria-labelledby="results-title" aria-hidden="true">
             <div class="results-card">
-                <h2>Test Complete</h2>
+                <h2 id="results-title">Test Complete</h2>
                 <div class="results-grid">
                     <div class="result-item">
                         <span class="result-value" id="resultWpm">0</span>

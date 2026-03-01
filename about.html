@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="page-about">
-    <nav class="navbar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navbar" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo"><span class="logo-text">JC</span></a>
+            <a href="index.html" class="logo" aria-label="JC Cuna - Home"><span class="logo-text">JC</span></a>
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
@@ -23,46 +24,46 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+                    <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="bento-page">
+    <main class="bento-page" id="main-content">
         <div class="bento-grid bento-grid-about">
             <article class="bento-card bento-card-wide">
                 <div class="card-inner">
-                    <h3 class="card-label">Who I Am</h3>
+                    <span class="card-label">Who I Am</span>
                     <h1 class="page-title">About Me</h1>
                     <p class="about-text">I am a <strong>full-stack web developer</strong> from the Philippines with a strong focus on <strong>system design</strong>, <strong>performance</strong>, and <strong>clean user interfaces</strong>. I specialize in building real-world business systems—clinic monitoring, inventory management, appointment portals—with attention to long-term maintainability.</p>
                 </div>
             </article>
             <article class="bento-card">
                 <div class="card-inner">
-                    <h3 class="card-label">Philosophy</h3>
+                    <span class="card-label">Philosophy</span>
                     <p class="about-text">Understanding the fundamentals comes before coding fast. My approach starts with <strong>proper architecture</strong>, <strong>clean data flow</strong>, and <strong>scalability</strong>. Clarity and structure in every line of code.</p>
                 </div>
             </article>
             <article class="bento-card">
                 <div class="card-inner">
-                    <h3 class="card-label">Approach</h3>
+                    <span class="card-label">Approach</span>
                     <p class="about-text">Highly <strong>detail-oriented</strong> and methodical. Every project is a long-term product—not a quick output. Quality over quantity, always.</p>
                 </div>
             </article>
             <article class="bento-card bento-card-highlight">
                 <div class="card-inner">
-                    <h3 class="card-label">Experience</h3>
+                    <span class="card-label">Experience</span>
                     <div class="exp-badge exp-badge-large">2+ Years</div>
                     <p class="about-text">Building production systems across healthcare, e-commerce, and business domains.</p>
                 </div>
             </article>
             <article class="bento-card bento-card-wide">
                 <div class="card-inner">
-                    <h3 class="card-label">Location</h3>
+                    <span class="card-label">Location</span>
                     <p class="about-text">Based in the <strong>Philippines</strong> 🇵🇭 — open to remote collaboration and new opportunities.</p>
                     <a href="contact.html" class="btn btn-primary" style="margin-top: 16px;">Get In Touch</a>
                 </div>

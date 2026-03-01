@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="page-contact">
-    <nav class="navbar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navbar" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo"><span class="logo-text">JC</span></a>
+            <a href="index.html" class="logo" aria-label="JC Cuna - Home"><span class="logo-text">JC</span></a>
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
@@ -23,39 +24,39 @@
                 <li><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+                    <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="bento-page">
+    <main class="bento-page" id="main-content">
         <div class="bento-grid bento-grid-contact">
             <article class="bento-card bento-card-wide">
                 <div class="card-inner">
-                    <h3 class="card-label">Let's Connect</h3>
+                    <span class="card-label">Let's Connect</span>
                     <h1 class="page-title">Contact</h1>
                     <p class="about-text">Have a project in mind? I'm always open to discussing new opportunities and creative ideas.</p>
                 </div>
             </article>
             <article class="bento-card">
                 <div class="card-inner">
-                    <h3 class="card-label">Email</h3>
+                    <span class="card-label">Email</span>
                     <a href="mailto:jc.cuna1@gmail.com" class="contact-email">jc.cuna1@gmail.com</a>
                 </div>
             </article>
             <article class="bento-card">
                 <div class="card-inner">
-                    <h3 class="card-label">Location</h3>
+                    <span class="card-label">Location</span>
                     <p class="about-text">Philippines 🇵🇭</p>
                 </div>
             </article>
             <article class="bento-card bento-card-wide">
                 <div class="card-inner">
-                    <h3 class="card-label">Social</h3>
+                    <span class="card-label">Social</span>
                     <div class="social-row">
                         <a href="#" class="social-link" aria-label="GitHub">GitHub</a>
                         <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
@@ -65,16 +66,19 @@
             </article>
             <article class="bento-card bento-card-form">
                 <div class="card-inner">
-                    <h3 class="card-label">Send a Message</h3>
+                    <span class="card-label">Send a Message</span>
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Your name" required>
+                            <label for="contact-name" class="visually-hidden">Your name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="your@email.com" required>
+                            <label for="contact-email" class="visually-hidden">Email address</label>
+                            <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+                            <label for="contact-message" class="visually-hidden">Your message</label>
+                            <textarea id="contact-message" name="message" rows="4" placeholder="Your message..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
                     </form>
