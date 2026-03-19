@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Earleen Rose</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a0a10;
+    --ink-light: #3d1f2b;
+    --parchment: #fdf4f7;
+    --parchment-dark: #f5e0e8;
+    --gold: #c4627a;
+    --gold-light: #e08fa4;
+    --rose: #b03060;
+    --rose-light: #e07090;
+    --cream: #fff5f8;
+    --deep-bg: #1a0510;
+    --pink-glow: #8b1a40;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--deep-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* Stars */
+  .stars {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .star {
+    position: absolute; background: #ffb6c8; border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: var(--mo, 0.7); transform: scale(1.2); }
+  }
+
+  /* Floating hearts */
+  .hearts-container {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .heart {
+    position: absolute; top: -30px;
+    opacity: 0;
+    animation: floatHeart var(--fd, 9s) linear var(--fdelay, 0s) infinite;
+    color: var(--rose-light);
+    font-size: var(--fs, 12px);
+  }
+  @keyframes floatHeart {
+    0%   { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(var(--fx, 40px)); opacity: 0; }
+  }
+
+  /* Pink ambient glow behind paper */
+  .glow-bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(180,40,90,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Envelope */
+  .envelope-screen {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: var(--deep-bg);
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+  .envelope-screen.hidden {
+    opacity: 0; visibility: hidden; pointer-events: none;
+  }
+
+  .envelope-wrap {
+    position: relative; cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .envelope-wrap:hover { transform: scale(1.05); }
+  .envelope-wrap:hover .env-lid { transform: rotateX(-160deg); }
+
+  .envelope { width: 240px; height: 160px; position: relative; }
+
+  .env-body {
+    width: 240px; height: 160px;
+    background: var(--parchment-dark);
+    border-radius: 4px 4px 14px 14px;
+    position: absolute; bottom: 0;
+    border: 1px solid var(--rose-light);
+    box-shadow: 0 8px 50px rgba(176,48,96,0.4), 0 0 80px rgba(176,48,96,0.15);
+    overflow: hidden;
+  }
+  .env-body::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 0; border-style: solid;
+    border-width: 0 0 80px 120px;
+    border-color: transparent transparent #f0d0da transparent;
+  }
+  .env-body::after {
+    content: ''; position: absolute; bottom: 0; right: 0;
+    width: 0; height: 0; border-style: solid;
+    border-width: 80px 120px 0 0;
+    border-color: #e8c0ce transparent transparent transparent;
+  }
+
+  .env-lid {
+    width: 240px; height: 120px;
+    position: absolute; top: 0;
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    z-index: 10;
+  }
+  .env-lid::before {
+    content: ''; position: absolute;
+    width: 0; height: 0; border-style: solid;
+    border-width: 0 120px 120px 120px;
+    border-color: transparent transparent var(--parchment) transparent;
+  }
+
+  .env-seal {
+    position: absolute; top: 92px; left: 50%;
+    transform: translateX(-50%); z-index: 20;
+    width: 40px; height: 40px;
+    background: var(--rose);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 18px;
+    box-shadow: 0 2px 16px rgba(176,48,96,0.6);
+    border: 1.5px solid var(--rose-light);
+  }
+
+  .envelope-title {
+    margin-top: 0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--rose-light);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+  }
+
+  .envelope-hint {
+    margin-top: 1rem;
+    color: rgba(224,143,164,0.6);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.2s forwards;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* Letter */
+  .letter-container {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 740px;
+    padding: 3rem 1.5rem 6rem;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  .letter-container.visible { opacity: 1; transform: translateY(0); }
+
+  .paper {
+    background: var(--parchment);
+    border-radius: 2px;
+    padding: 4.5rem 4.5rem 5rem;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(176,48,96,0.2),
+      0 4px 8px rgba(0,0,0,0.15),
+      0 24px 70px rgba(0,0,0,0.55),
+      0 0 100px rgba(176,48,96,0.08),
+      inset 0 0 60px rgba(224,112,144,0.04);
+  }
+
+  .paper::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      transparent, transparent 31px,
+      rgba(176,48,96,0.07) 31px, rgba(176,48,96,0.07) 32px
+    );
+    background-position: 0 4.5rem;
+    border-radius: 2px; pointer-events: none;
+  }
+
+  .paper::after {
+    content: ''; position: absolute;
+    top: 3.5rem; bottom: 3rem; left: 3.5rem;
+    width: 1px; background: rgba(176,48,96,0.12);
+  }
+
+  .paper-inner { position: relative; z-index: 1; }
+
+  .letter-header { text-align: right; margin-bottom: 2.5rem; }
+  .letter-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; color: var(--ink-light);
+    font-style: italic; letter-spacing: 0.05em;
+  }
+
+  .letter-ornament {
+    text-align: center; margin: 0 0 2rem;
+    color: var(--rose); font-size: 1.2rem;
+    letter-spacing: 0.4em; opacity: 0.6;
+  }
+
+  .recipient-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem; color: var(--rose);
+    letter-spacing: 0.12em; margin-bottom: 2rem;
+  }
+
+  .letter-body p {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.15rem; line-height: 2;
+    color: var(--ink); margin-bottom: 1.5rem;
+    text-indent: 2rem;
+  }
+
+  .highlight { color: var(--rose); font-style: italic; }
+  .gold-text { color: var(--gold); font-style: italic; }
+
+  .drop-cap::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 4rem; font-weight: 600;
+    float: left; line-height: 0.78;
+    padding-right: 0.12rem;
+    color: var(--rose); text-indent: 0;
+  }
+
+  .divider {
+    text-align: center; margin: 2rem 0;
+    color: var(--rose-light); letter-spacing: 0.6em;
+    opacity: 0.45; font-size: 0.75rem;
+  }
+
+  .closing { margin-top: 2.5rem; text-align: right; }
+  .closing-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: var(--ink-light);
+    font-style: italic; display: block; margin-bottom: 0.4rem;
+  }
+  .signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem; font-weight: 300;
+    color: var(--rose); font-style: italic;
+    line-height: 1.2; display: block;
+  }
+
+  .postscript {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(176,48,96,0.18);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: var(--ink-light); line-height: 1.8;
+  }
+  .postscript strong { color: var(--rose); font-weight: 600; }
+
+  /* Counter */
+  .counter-ribbon {
+    position: relative; z-index: 2;
+    margin: 2rem auto 0; max-width: 340px; text-align: center;
+  }
+  .counter-box {
+    background: rgba(26,5,16,0.75);
+    border: 1px solid rgba(176,48,96,0.45);
+    border-radius: 4px; padding: 1.2rem 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(176,48,96,0.15);
+  }
+  .counter-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem; color: var(--rose-light);
+    letter-spacing: 0.28em; text-transform: uppercase;
+    display: block; margin-bottom: 0.5rem;
+  }
+  .counter-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; color: #fde8f0;
+    font-style: italic; letter-spacing: 0.05em;
+  }
+
+  .footer-glow {
+    position: relative; z-index: 2;
+    text-align: center; padding: 3rem 0 2rem;
+    color: rgba(176,48,96,0.35);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-style: italic; letter-spacing: 0.1em;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.shown { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .paper { padding: 2.5rem 1.8rem 3.5rem; }
+    .paper::after { display: none; }
+    .letter-body p { font-size: 1.05rem; }
+    .signature { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="hearts-container" id="hearts"></div>
+<div class="glow-bg"></div>
+
+<!-- Envelope -->
+<div class="envelope-screen" id="envelopeScreen">
+  <div class="envelope-wrap" id="envelopeWrap" onclick="openLetter()">
+    <div class="envelope">
+      <div class="env-lid"></div>
+      <div class="env-body"></div>
+      <div class="env-seal">♥</div>
+    </div>
+  </div>
+  <p class="envelope-title">For Earleen Rose</p>
+  <p class="envelope-hint">hover to open · click to read</p>
+</div>
+
+<!-- Letter -->
+<div class="letter-container" id="letterContainer">
+
+  <div class="paper reveal" id="paperReveal">
+    <div class="paper-inner">
+
+      <div class="letter-header">
+        <span class="letter-date" id="letterDate"></span>
+      </div>
+
+      <div class="letter-ornament">— ✦ —</div>
+
+      <div class="recipient-name">My dearest Earleen Rose,</div>
+
+      <div class="letter-body">
+
+        <p class="drop-cap">There is a kind of love that doesn't announce itself — it arrives quietly, like the first light of morning that you almost miss because you're still half asleep. That is how you came into my life. And now, <span class="highlight" id="yearsMonthsLater">one year and five months later</span>, I find myself waking every day in disbelief that someone as radiant as you chose to love someone like me.</p>
+
+        <p>You carry your name beautifully — Earleen Rose — and I have come to believe it was no accident. You are soft and lovely like a rose in full bloom, but you have thorns too: a quiet strength, a fierce heart, a depth that the casual eye might miss entirely. <span class="gold-text">I have never wanted to miss a single thing about you.</span></p>
+
+        <div class="divider">· · · ♥ · · ·</div>
+
+        <p>The way your presence fills a room before you even speak. The warmth you carry so effortlessly — not just for me, but for everyone lucky enough to be near you. I notice how genuinely you feel things, how you love with intention, how you make ordinary moments feel like they deserve to be remembered. And I have been trying to remember all of them.</p>
+
+        <p>On days when life felt heavy, you were the reason I kept going. Not because you fixed anything — but because being near you reminded me that <span class="highlight">beauty still exists, that gentleness is real, and that I am seen by someone whose seeing matters most to me.</span></p>
+
+        <div class="divider">· · · ♥ · · ·</div>
+
+        <p>So on this monthsary — our <span class="gold-text" id="yearsMonthsText"></span> — I do not simply want to celebrate how far we've come. I want to celebrate <span class="gold-text">you</span>. The way you love, the way you laugh, the way your name sounds when I say it and it still feels like poetry. You are my favorite poem, Earleen Rose. One I will never stop reading.</p>
+
+        <p>I choose you again today. I will choose you in every quiet Tuesday and every ordinary evening. You are not just my love — you are my home.</p>
+
+      </div>
+
+      <div class="closing">
+        <span class="closing-word">Yours completely and always,</span>
+        <span class="signature">JC</span>
+      </div>
+
+      <div class="postscript">
+        <strong>P.S.</strong> — Your name has two beautiful words in it and somehow they still aren't enough to describe you. I love you. ♥
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Counter -->
+  <div class="counter-ribbon reveal" id="counterReveal">
+    <div class="counter-box">
+      <span class="counter-label">Together for</span>
+      <span class="counter-value" id="togetherCount">calculating...</span>
+    </div>
+  </div>
+
+  <div class="footer-glow reveal" id="footerReveal">
+    Made with love by JC · just for Earleen Rose ♥
+  </div>
+
+</div>
+
+<script>
+  // Stars (pink tint)
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 130; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${(Math.random()*3+2).toFixed(1)}s;--mo:${(Math.random()*0.5+0.25).toFixed(2)};animation-delay:${(Math.random()*5).toFixed(1)}s;`;
+    starsEl.appendChild(s);
+  }
+
+  // Floating hearts
+  const heartsEl = document.getElementById('hearts');
+  const heartSymbols = ['♥','♡','❤','✿'];
+  for (let i = 0; i < 20; i++) {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
+    h.style.cssText = `left:${Math.random()*100}%;--fd:${(Math.random()*9+6).toFixed(1)}s;--fdelay:${(Math.random()*12).toFixed(1)}s;--fx:${(Math.random()*100-50).toFixed(0)}px;--fs:${Math.floor(Math.random()*10+8)}px;`;
+    heartsEl.appendChild(h);
+  }
+
+  // Date
+  const now = new Date();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('letterDate').textContent = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+
+  // Counter — set your actual start date here: new Date(YEAR, MONTH-1, DAY)
+  const startDate = new Date(2021, 9, 20); // October 20, 2021
+  const words = ['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty','twenty-one','twenty-two','twenty-three','twenty-four','twenty-five'];
+  function numToWord(n) { return n < words.length ? words[n] : String(n); }
+  function getYearsMonthsText() {
+    const now = new Date();
+    let months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+    if (now.getDate() < startDate.getDate()) months--;
+    const y = Math.floor(months / 12), m = months % 12;
+    if (y === 0) return m === 1 ? 'one month later' : numToWord(m) + ' months later';
+    if (m === 0) return y === 1 ? 'one year later' : numToWord(y) + ' years later';
+    const yStr = y === 1 ? 'one year' : numToWord(y) + ' years';
+    const mStr = m === 1 ? 'one month' : numToWord(m) + ' months';
+    return yStr + ' and ' + mStr + ' later';
+  }
+  function updateCounter() {
+    const diff = Date.now() - startDate.getTime();
+    const days  = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs  = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('togetherCount').textContent = `${days}d · ${hours}h · ${mins}m · ${secs}s`;
+    const ymEl = document.getElementById('yearsMonthsLater');
+    if (ymEl) ymEl.textContent = getYearsMonthsText();
+  }
+  updateCounter();
+  setInterval(updateCounter, 1000);
+
+  // Open letter
+  function openLetter() {
+    document.getElementById('envelopeScreen').classList.add('hidden');
+    setTimeout(() => {
+      document.getElementById('letterContainer').classList.add('visible');
+      setTimeout(() => {
+        document.getElementById('paperReveal').classList.add('shown');
+        setTimeout(() => document.getElementById('counterReveal').classList.add('shown'), 600);
+        setTimeout(() => document.getElementById('footerReveal').classList.add('shown'), 900);
+      }, 300);
+    }, 800);
+  }
+</script>
+</body>
+</html>
